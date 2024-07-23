@@ -16,8 +16,12 @@ class GameManager(object):
         # with open('config.txt', 'r') as f:
         #     cc = f.read()
         # ls = eval(cc)
+        try:
+            self.player_search = cdll.LoadLibrary('/home/ubuntu/DecisionHoldem/PokerAI/AlascasiaHoldem.so')
+        except OSError as e:
+            print(f"Error loading .so file: {e}")
         print('ai start load')
-        self.player_search = cdll.LoadLibrary('./AlascasiaHoldem.so')
+        # self.player_search = cdll.LoadLibrary('./AlascasiaHoldem.so')
         print('load finish')
         self.human_total_win = 0
         self.cheat_decks = None
